@@ -13,15 +13,14 @@ final class BN_2021UITests: XCTestCase {
     func testContactsPermissionsAllowed() throws {
         // GIVEN:
         launchAppWithCleanContactsPermissions()
-        
-        // WHEN:
         addUIInterruptionMonitor(app, interruptionTypes: [InterruptionType(.contacts, .allow)])
         
-        // THEN:
+        // WHEN:
         app
             .staticTexts["Action"]
             .tap()
         
+        // THEN:
         app
             .navigationBars["Contacts Permissions Allowed, yay!"]
             .buttons["Back"]
@@ -31,15 +30,14 @@ final class BN_2021UITests: XCTestCase {
     func testContactsPermissionsDisallowed() throws {
         // GIVEN:
         launchAppWithCleanContactsPermissions()
-        
-        // WHEN:
         addUIInterruptionMonitor(app, interruptionType: InterruptionType(.contacts, .deny))
         
-        // THEN:
+        // WHEN:
         app
             /*@START_MENU_TOKEN@*/.staticTexts["Action"]/*[[".buttons[\"Action\"].staticTexts[\"Action\"]",".staticTexts[\"Action\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
             .tap()
         
+        // THEN:
         app
             .navigationBars["Disallowed :("]
             .buttons["Back"]
