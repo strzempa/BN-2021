@@ -34,7 +34,7 @@ final class BN_2021UITests: XCTestCase {
         
         // WHEN:
         app
-            /*@START_MENU_TOKEN@*/.staticTexts["Action"]/*[[".buttons[\"Action\"].staticTexts[\"Action\"]",".staticTexts[\"Action\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+            .staticTexts["Action"]
             .tap()
         
         // THEN:
