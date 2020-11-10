@@ -13,7 +13,7 @@ final class BN_2021UITests: XCTestCase {
     func testContactsPermissionsAllowed() throws {
         // GIVEN:
         launchAppWithCleanContactsPermissions()
-        addUIInterruptionMonitor(app, interruptionTypes: [InterruptionType(.contacts, .allow)])
+        addUIInterruptionMonitor(app, interruptionTypes: [InterruptionType(.contacts(.allow))])
         
         // WHEN:
         app
@@ -30,7 +30,7 @@ final class BN_2021UITests: XCTestCase {
     func testContactsPermissionsDisallowed() throws {
         // GIVEN:
         launchAppWithCleanContactsPermissions()
-        addUIInterruptionMonitor(app, interruptionType: InterruptionType(.contacts, .deny))
+        addUIInterruptionMonitor(app, interruptionType: InterruptionType(.contacts(.deny)))
         
         // WHEN:
         app
@@ -58,13 +58,10 @@ private extension BN_2021UITests {
 
 /// Type of interruption alert with assigned action
 public struct InterruptionType {
-    public let action: Action
     public let alert: Alert
     
-    public init(_ alert: Alert,
-                _ action: Action) {
+    public init(_ alert: Alert) {
         self.alert = alert
-        self.action = action
     }
     
     /// Possible actions on Interruption
@@ -74,8 +71,8 @@ public struct InterruptionType {
     }
     
     /// Interruption alerts
-    public enum Alert: String {
-        case contacts
+    public enum Alert {
+        case contacts(Action)
         
         /// Name of the alert based on case and app instance name
         /// - Parameter app: Test app reference
@@ -87,19 +84,16 @@ public struct InterruptionType {
             }
         }
         
-        /// Text on UI that allows permissions
-        func allowText() -> String {
+        /// Text on UI that makes an action
+        func actionText() -> String {
             switch self {
-            case .contacts:
-                return "OK"
-            }
-        }
-        
-        /// Text on UI that denies permissions
-        func denyText() -> String {
-            switch self {
-            case .contacts:
-                return "Don’t Allow"
+            case .contacts(let action):
+                switch action {
+                case .allow:
+                    return "OK"
+                case .deny:
+                    return "Don’t Allow"
+                }
             }
         }
     }
@@ -124,7 +118,7 @@ public extension XCTestCase {
     func addUIInterruptionMonitor(_ app: XCUIApplication,
                                   interruptionType: InterruptionType) {
         addUIInterruptionMonitor(
-            withDescription: "System Alert \(interruptionType.alert.rawValue)"
+            withDescription: "System Alert \(interruptionType.alert)"
         ) { (alert) -> Bool in
             
             let permissionsAlert
@@ -136,14 +130,8 @@ public extension XCTestCase {
                 return false
             }
             
-            switch interruptionType.action {
-            case .allow:
-                alert
-                    .buttons[interruptionType.alert.allowText()].tap()
-            case .deny:
-                alert
-                    .buttons[interruptionType.alert.denyText()].tap()
-            }
+            alert
+                .buttons[interruptionType.alert.actionText()].tap()
             
             return true
         }
