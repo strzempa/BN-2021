@@ -1,4 +1,4 @@
-Xcode Version 12.1
+Use Xcode Version 12.1
 
 Project covering WWDC2020 sessions:
 
@@ -8,8 +8,8 @@ https://developer.apple.com/videos/play/wwdc2020/10220/
 
 Research results:
 
-UI tests
-UI interruption
+# UI tests
+## UI interruption
 Since iOS 9 XCTest contains a method `addUIInterruptionMonitor` that handles the dismissal of system alerts. Apparently Apple decided this year is a good time to present it. Method in its closure passes the found XCUIElement (may be an alert or a banner). Developers can add a custom handler. Handlers should return true if they invoked an action on the UI, false if they did not. Method can be called in any spot in the test suite before execution of the next steps. Returns an opaque token that can be used to remove the monitor with `removeUIInterruptionMonitor` method.
 
 
@@ -25,24 +25,24 @@ I added a draft concept of an Extension to XCTestCase into an example project.
 https://github.com/strzempa/BN-2021/blob/master/BN-2021UITests/BN_2021UITests.swift 
 
 
-Reset the authorization status
+## Reset the authorization status
 Since iOS 13.4 developers can reset permissions for XCUIProtectedResource (contacts, calendar, reminders, photos, microphone, camera, mediaLibrary, homeKit, bluetooth, keyboardNetwork, location, health). Just call resetAuthorizationStatus method on your XCUIApplication instance. It may be a good practice to call it before launching the app as documentation says 'If the app is running, it might get terminated while the reset occurs for some protected resources.'.
 
 https://github.com/strzempa/BN-2021/blob/master/BN-2021Tests/BN_2021Tests.swift 
 
 
-Unit tests
-Latest Apple's recommendations:
+# Unit tests
+## Latest Apple's recommendations:
 
-Use Execution Time Allowances to ensure your tests always complete running
+* Use Execution Time Allowances to ensure your tests always complete running
 
-Use spindumps for diagnosing application stalls and hangs
+* Use spindumps for diagnosing application stalls and hangs
 
-Use Parallel Distributed Testing to speed up your tests
+* Use Parallel Distributed Testing to speed up your tests
 
-Use Parallel Destination Testing to simultaneously run your tests on more OS versions and devices
+* Use Parallel Destination Testing to simultaneously run your tests on more OS versions and devices
 
-Execution Time Allowance
+## Execution Time Allowance
 Execution Time Allowance is a new test plan option in Xcode 12. (works only in test plans so for older projects one must migrate).
 
 
@@ -70,7 +70,7 @@ If a test fails because of exceeding the threshold the Assertion Failure will be
 
 
 
-Parallel Distributed Testing
+## Parallel Distributed Testing
 Concept is not new. Tests get split by class into different instances of simulators. It works right now on physical devices of iOS and tvOS and Apple encourages us developers to use it for all the tests as it is faster. 
 
 Go to Test Plan, select plan, select options and tick 'execute in parallel'. Xcode will run separate test suites on different device
