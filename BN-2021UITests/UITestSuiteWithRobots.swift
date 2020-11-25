@@ -7,13 +7,10 @@
 
 import XCTest
 
-final class UITestSuiteWithRobots: XCTestCase {
-    private var app: XCUIApplication!
-    
+final class UITestSuiteWithRobots: XCTestCase {    
     override func setUp() {
         super.setUp()
-        app = XCUIApplication()
-        app.launch()
+        XCUIApplication().launch()
     }
     
     func test_appNavigatesBetweenScreens() {
