@@ -7,52 +7,52 @@
 
 import XCTest
 
-final class BN_2021UITests: XCTestCase {
-    private var app: XCUIApplication!
-    
-    func testContactsPermissionsAllowed() throws {
-        // GIVEN:
-        launchAppWithCleanContactsPermissions()
-        addUIInterruptionMonitor(app, interruptionTypes: [InterruptionType(.contacts(.allow))])
-        
-        // WHEN:
-        app
-            .staticTexts["Action"]
-            .tap()
-        
-        // THEN:
-        app
-            .navigationBars["Contacts Permissions Allowed, yay!"]
-            .buttons["Back"]
-            .tap()
-    }
-    
-    func testContactsPermissionsDisallowed() throws {
-        // GIVEN:
-        launchAppWithCleanContactsPermissions()
-        addUIInterruptionMonitor(app, interruptionType: InterruptionType(.contacts(.deny)))
-        
-        // WHEN:
-        app
-            .staticTexts["Action"]
-            .tap()
-        
-        // THEN:
-        app
-            .navigationBars["Disallowed :("]
-            .buttons["Back"]
-            .tap()
-    }
-}
-
-private extension BN_2021UITests {
-    /// App Launch with clean contacts authorization
-    func launchAppWithCleanContactsPermissions() {
-        app = XCUIApplication()
-        app.resetAuthorizationStatus(for: .contacts)
-        app.launch()
-    }
-}
+//final class BN_2021UITests: XCTestCase {
+//    private var app: XCUIApplication!
+//
+//    func testContactsPermissionsAllowed() throws {
+//        // GIVEN:
+//        launchAppWithCleanContactsPermissions()
+//        addUIInterruptionMonitor(app, interruptionTypes: [InterruptionType(.contacts(.allow))])
+//
+//        // WHEN:
+//        app
+//            .staticTexts["Action"]
+//            .tap()
+//
+//        // THEN:
+//        app
+//            .navigationBars["Contacts Permissions Allowed, yay!"]
+//            .buttons["Back"]
+//            .tap()
+//    }
+//
+//    func testContactsPermissionsDisallowed() throws {
+//        // GIVEN:
+//        launchAppWithCleanContactsPermissions()
+//        addUIInterruptionMonitor(app, interruptionType: InterruptionType(.contacts(.deny)))
+//
+//        // WHEN:
+//        app
+//            .staticTexts["Action"]
+//            .tap()
+//
+//        // THEN:
+//        app
+//            .navigationBars["Disallowed :("]
+//            .buttons["Back"]
+//            .tap()
+//    }
+//}
+//
+//private extension BN_2021UITests {
+//    /// App Launch with clean contacts authorization
+//    func launchAppWithCleanContactsPermissions() {
+//        app = XCUIApplication()
+//        app.resetAuthorizationStatus(for: .contacts)
+//        app.launch()
+//    }
+//}
 
 // LIB DRAFT
 

@@ -14,11 +14,11 @@
       "containerPath" : "container:BN-2021.xcodeproj",
       "identifier" : "3697810E255407F000CE0F8C",
       "name" : "BN-2021"
-    },
-    "testTimeoutsEnabled" : true
+    }
   },
   "testTargets" : [
     {
+      "enabled" : false,
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:BN-2021.xcodeproj",

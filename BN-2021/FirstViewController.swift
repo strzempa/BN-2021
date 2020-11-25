@@ -15,6 +15,10 @@ final class FirstViewController: UIViewController {
     private var actionButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(mainButtonAction), for: .touchUpInside)
+        button.accessibilityIdentifier = "actionButton"
+        button.isAccessibilityElement = true
+        button.accessibilityTraits = .button
+        button.accessibilityIdentifier = "actionButton"
         return button
     }()
     
@@ -54,6 +58,7 @@ final class FirstViewController: UIViewController {
         actionButton.setTitle(enabled ? "Action" : "🐴", for: .normal)
         actionButton.setTitleColor(enabled ? .green : .red, for: .normal)
         actionButton.isEnabled = enabled
+        
     }
     
     func buttonTitle() -> String? {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360348BF256D40D300BD3C13 /* UITestSuiteWithRobots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360348BE256D40D300BD3C13 /* UITestSuiteWithRobots.swift */; };
+		360348C4256D419000BD3C13 /* HomeScreenRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360348C3256D419000BD3C13 /* HomeScreenRobot.swift */; };
 		36978113255407F000CE0F8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36978112255407F000CE0F8C /* AppDelegate.swift */; };
 		36978115255407F000CE0F8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36978114255407F000CE0F8C /* SceneDelegate.swift */; };
 		36978117255407F000CE0F8C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36978116255407F000CE0F8C /* FirstViewController.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		360348BE256D40D300BD3C13 /* UITestSuiteWithRobots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestSuiteWithRobots.swift; sourceTree = "<group>"; };
+		360348C3256D419000BD3C13 /* HomeScreenRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRobot.swift; sourceTree = "<group>"; };
 		362BEEB625557ED60052C563 /* BN-2021.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BN-2021.xctestplan"; sourceTree = "<group>"; };
 		3697810F255407F000CE0F8C /* BN-2021.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BN-2021.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36978112255407F000CE0F8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360348C8256D426900BD3C13 /* Robots */ = {
+			isa = PBXGroup;
+			children = (
+				360348C3256D419000BD3C13 /* HomeScreenRobot.swift */,
+			);
+			path = Robots;
+			sourceTree = "<group>";
+		};
 		36978106255407F000CE0F8C = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +132,8 @@
 			children = (
 				36978134255407F100CE0F8C /* BN_2021UITests.swift */,
 				36978136255407F100CE0F8C /* Info.plist */,
+				360348BE256D40D300BD3C13 /* UITestSuiteWithRobots.swift */,
+				360348C8256D426900BD3C13 /* Robots */,
 			);
 			path = "BN-2021UITests";
 			sourceTree = "<group>";
@@ -270,7 +284,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				360348C4256D419000BD3C13 /* HomeScreenRobot.swift in Sources */,
 				36978135255407F100CE0F8C /* BN_2021UITests.swift in Sources */,
+				360348BF256D40D300BD3C13 /* UITestSuiteWithRobots.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
